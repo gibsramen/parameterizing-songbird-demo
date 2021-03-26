@@ -1,0 +1,11 @@
+name: sbdemo
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - pandas
+  - numpy
+  - python=3.7
+  - biom-format
+  - matplotlib
+  - seaborn
