@@ -1,11 +1,11 @@
-name: sbdemo
 channels:
   - conda-forge
+  - bioconda
   - defaults
 dependencies:
-  - pandas
+  - python=3.6
   - numpy
-  - python=3.7
   - biom-format
+  - pandas
   - matplotlib
   - seaborn

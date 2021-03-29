@@ -1,18 +1,19 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from qiime2 import Artifact, Metadata
-from qiime2.plugins import songbird
-
-table = Artifact.load("../data/oral_trimmed_deblur.qza")
-metadata = pd.read_csv("../data/oral_trimmed_metadata.txt", sep="\t",
-                       index_col=0)
-metadata.columns = [x.replace(" ", "_") for x in metadata.columns]
-metadata.columns = [x.replace(")", "") for x in metadata.columns]
-metadata.columns = [x.replace("(", "") for x in metadata.columns]
-metadata = Metadata(metadata)
 
 def run_songbird(dp, lr, epochs, formula="C(brushing_event)"):
+    from qiime2 import Artifact, Metadata
+    from qiime2.plugins import songbird
+
+    table = Artifact.load("../data/oral_trimmed_deblur.qza")
+    metadata = pd.read_csv("../data/oral_trimmed_metadata.txt", sep="\t",
+                        index_col=0)
+    metadata.columns = [x.replace(" ", "_") for x in metadata.columns]
+    metadata.columns = [x.replace(")", "") for x in metadata.columns]
+    metadata.columns = [x.replace("(", "") for x in metadata.columns]
+    metadata = Metadata(metadata)
+
     diff, stats, biplot = songbird.actions.multinomial(
         table,
         metadata,
